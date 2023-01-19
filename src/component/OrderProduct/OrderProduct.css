@@ -1,0 +1,21 @@
+.noItem{
+    text-align: center;
+    margin-top: 20px;
+}
+.noItem a{
+    text-decoration: none;
+}
+.shop-btn{
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 2px 5px;
+    border: none;
+    background-color: goldenrod;
+}
+.shop-btn a{
+    color: white;
+    text-decoration: none;
+}
+.shop-btn:hover{
+    background-color: rgb(25, 25, 253);
+}

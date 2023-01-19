@@ -1,7 +1,7 @@
 import './Orders.css'
 
 const Orders = (props) => {
-    const {cart, clearCart} = props;
+    const {cart, clearCart, children} = props;
     let total = 0;
     let quantity = 0;
     let shipping = 0;
@@ -23,7 +23,8 @@ const Orders = (props) => {
             <p>Shipping Cost: {shipping}</p>
             <p>Tax(10%): {tax}</p>
             <p><b>Grand Total: {grandTotal.toFixed(2)}</b></p>
-            <button onClick={() => clearCart(props.product)} className='cart-btn'>Clear Cart</button>
+            <button onClick={clearCart} className='cart-btn'>Clear Cart</button>
+            {children}
         </div>
     );
 };

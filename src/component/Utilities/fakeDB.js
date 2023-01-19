@@ -38,9 +38,13 @@ const addCartFromLocalStorage = () => {
     return cartObj;
 }
 
+const deleteFromLocalStorage = () => {
+    localStorage.removeItem('shopping-cart');
+}
 
 export {
     addToDB,
     addCartFromLocalStorage,
-    removeFromLocalStorage
+    removeFromLocalStorage,
+    deleteFromLocalStorage
 }

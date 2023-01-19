@@ -13,9 +13,10 @@ const Header = () => {
             <Container>
                 <img src={logo} alt='img-failed'/>
                 <Nav>
-                    <a href="#home">Home</a>
-                    <a href="#orders">Orders</a>
-                    <a href="#login">Login</a>
+                    <a href='shop'>Shop</a>
+                    <a href="inventory">Inventory</a>
+                    <a href='orders'>Orders</a>
+                    <a href="about">About</a>
                 </Nav>
             </Container>
             </Navbar>
