@@ -12,3 +12,7 @@
 .navbar a:hover{
     color: orange;
 }
+.btn-logout {
+    border: none;
+    margin-left: 10px;
+}

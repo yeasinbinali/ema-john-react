@@ -5,17 +5,16 @@
 .noItem a{
     text-decoration: none;
 }
-.shop-btn{
-    margin-left: 10px;
+.shipping-process{
     text-decoration: none;
     padding: 2px 5px;
     border: none;
     background-color: goldenrod;
 }
-.shop-btn a{
+.shipping-process a{
     color: white;
     text-decoration: none;
 }
-.shop-btn:hover{
+.shipping-process:hover{
     background-color: rgb(25, 25, 253);
 }

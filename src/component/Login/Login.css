@@ -1,0 +1,76 @@
+.form-container {
+  width: 500px;
+  height: 600px;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+}
+form {
+  margin-left: 40px;
+}
+.form-title {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 42px;
+  letter-spacing: 0.0025em;
+  text-align: center;
+  color: #2a414f;
+  padding: 20px;
+}
+.form-detail {
+  margin-bottom: 20px;
+}
+.form-detail label {
+  margin-bottom: 5px;
+  display: block;
+}
+.form-detail input {
+  width: 415px;
+  height: 55px;
+  font-size: 18px;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  padding: 5px;
+}
+.btn-submit {
+  margin-top: 20px;
+  width: 415px;
+  height: 55px;
+  border: none;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.0015em;
+  color: #0e161a;
+  background: rgba(255, 153, 0, 0.3);
+  border-radius: 5px;
+}
+.btn-submit:hover {
+  background: rgba(255, 153, 0, 0.6);
+}
+.form-another {
+  text-align: center;
+  margin-top: 9px;
+}
+.form-another a {
+  color: chocolate;
+  text-decoration: none;
+}
+.or-section {
+  text-align: center;
+  margin: 30px 0;
+  color: rgba(149, 160, 167, 1);
+}
+.google-btn {
+  width: 415px;
+  height: 55px;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  margin-left: 40px;
+}
+.google-btn:hover {
+  color: whitesmoke;
+  background: #919ca3;
+}
