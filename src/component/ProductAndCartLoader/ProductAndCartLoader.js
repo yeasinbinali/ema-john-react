@@ -2,8 +2,10 @@ import { addCartFromLocalStorage } from "../Utilities/fakeDB";
 
 export const ProductAndCartLoader = async () => {
   // get products
-  const productsData = await fetch("http://localhost:5000/products");
-  const {products} = await productsData.json();
+  const productsData = await fetch(
+    "https://ema-john-server-eosin.vercel.app/products"
+  );
+  const { products } = await productsData.json();
 
   // getCart
   const savedCart = addCartFromLocalStorage();

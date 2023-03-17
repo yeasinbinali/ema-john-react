@@ -22,7 +22,7 @@ const Shop = () => {
   const pages = Math.ceil(count / size);
 
   useEffect(() => {
-    const url = `http://localhost:5000/products?page=${page}&size=${size}`;
+    const url = `https://ema-john-server-eosin.vercel.app/products?page=${page}&size=${size}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -35,17 +35,17 @@ const Shop = () => {
     const storedCart = addCartFromLocalStorage();
     const savedCart = [];
     const ids = Object.keys(storedCart);
-    fetch('http://localhost:5000/productsByIds', {
-      method: 'POST',
+    fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(ids)
+      body: JSON.stringify(ids),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log('by ids', data);
-      for (const id in storedCart) {
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("by ids", data);
+        for (const id in storedCart) {
           const addedProduct = data?.find((product) => product._id === id);
           if (addedProduct) {
             const quantity = storedCart[id];
@@ -54,7 +54,7 @@ const Shop = () => {
           }
         }
         setCart(savedCart);
-    })
+      });
   }, [products]);
 
   const handleAddToCart = (selectedProduct) => {
