@@ -16,3 +16,19 @@
     border: none;
     margin-left: 10px;
 }
+
+@media screen and (max-width: 601px) {
+    .navbar a{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .navbar a{
+        color: white;
+        text-decoration: none;
+        margin-left: 10px;
+        float: right;
+        font-size: 11px;
+    }
+}

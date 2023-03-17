@@ -2,9 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./layouts/Main/Main";
 import Shop from "./component/Shop/Shop";
-import Inventory from "./component/Inventory/Inventory";
 import OrderProduct from "./component/OrderProduct/OrderProduct";
-import About from "./component/About/About";
 import { ProductAndCartLoader } from "./component/ProductAndCartLoader/ProductAndCartLoader";
 import Login from "./component/Login/Login";
 import Signup from "./component/Signup/Signup";
@@ -19,10 +17,9 @@ function App() {
       children: [
         {
           path: "/",
-          loader: () => fetch("products.json"),
+          loader: () => fetch("http://localhost:5000/products"),
           element: <Shop></Shop>,
         },
-        { path: "/inventory", element: <Inventory></Inventory> },
         {
           path: "/shipping",
           element: (
@@ -43,8 +40,7 @@ function App() {
           path: "/orders",
           loader: ProductAndCartLoader,
           element: <OrderProduct></OrderProduct>,
-        },
-        { path: "/about", element: <About></About> },
+        }
       ],
     },
   ]);

@@ -17,9 +17,7 @@ const Header = () => {
                 <img src={logo} alt='img-failed'/>
                 <Nav>
                     <Link to='/'>Shop</Link>
-                    <Link to="/inventory">Inventory</Link>
                     <Link to='/orders'>Orders</Link>
-                    <Link to="/about">About</Link>
                     {
                         user?.uid ? 
                         <button className='btn-logout' onClick={logOutUser}>Logout</button>

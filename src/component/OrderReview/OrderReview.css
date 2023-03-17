@@ -36,3 +36,35 @@
     width: 13px;
     color: #EB5757;
 }
+
+@media screen and (max-width: 1025px) {
+    .review-img img{
+        width: 80px;
+        padding: 5px;
+        border-radius: 10px;
+    }
+    .review-item{
+        display: flex;
+        width: 300px;
+        border: 1px solid gray;
+        border-radius: 15px;
+        margin: 21px auto;
+    }
+}
+
+@media screen and (max-width: 601px) {
+    .review-item{
+        display: block;
+        width: 150px;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 15px;
+        margin: 21px auto;
+    }
+    .review-container{
+        display: block;
+    }
+    .delete-container{
+        margin: 10px 0;
+    }
+}

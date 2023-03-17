@@ -5,6 +5,7 @@ import './OrderReview.css'
 
 const OrderReview = ({product, handleRemoveCart}) => {
     const {id, name, price, quantity, img, shipping} = product;
+    console.log(product.quantity);
     return (
         <div className='review-item'>
             <div className='review-img'>
@@ -15,7 +16,7 @@ const OrderReview = ({product, handleRemoveCart}) => {
                     <p className='name'>{name}</p>
                     <p><small>Price: ${price}</small></p>
                     <p><small>Quantity: {quantity}</small></p>
-                    <p><small>Shipping Charge: ${shipping}</small></p>
+                    <p><small>Shipping: ${shipping}</small></p>
                 </div>
                 <div className='delete-container'>
                     <button onClick={() => handleRemoveCart(id)} className='delete-btn'>

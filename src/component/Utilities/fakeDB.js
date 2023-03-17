@@ -22,7 +22,7 @@ const removeFromLocalStorage = id => {
         const cartObj = JSON.parse(getCart);
         if(cartObj){
             delete cartObj[id];
-            localStorage.setItem('shopping-cart', JSON.stringify(cartObj))
+            localStorage.setItem('shopping-cart', JSON.stringify(cartObj));
         }
     }
 }
