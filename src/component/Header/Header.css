@@ -1,16 +1,20 @@
-.navbar{
-    background: rgba(28, 43, 53, 1);
+section{
+    text-align: center;
+}
+.navbar-container{
+    background: rgb(255, 145, 0);
     padding: 20px 0;
 }
-.navbar a{
+.navbar-container a{
     color: white;
     text-decoration: none;
     margin-left: 20px;
-    float: right;
-    font-size: 17px;
+    font-size: 24px;
+    font-weight: bold;
 }
-.navbar a:hover{
-    color: orange;
+.logo{
+    width: 35%;
+    margin: 10px 0 20px 0;
 }
 .btn-logout {
     border: none;
@@ -28,7 +32,6 @@
         color: white;
         text-decoration: none;
         margin-left: 10px;
-        float: right;
         font-size: 11px;
     }
 }
