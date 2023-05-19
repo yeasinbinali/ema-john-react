@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Orders from "../Orders/Orders";
 import Products from "../Products/Products";
 import {
   addCartFromLocalStorage,
@@ -28,7 +26,7 @@ const Shop = () => {
         setCount(data.count);
         setProducts(data.products);
       });
-  }, [page, size]);
+  }, [page, size, setProducts]);
 
   useEffect(() => {
     const storedCart = addCartFromLocalStorage();
@@ -95,7 +93,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="shop-container">
+    <div className='container'>
       <div className="products">
         {products?.map((product) => (
           <Products
@@ -106,16 +104,16 @@ const Shop = () => {
           ></Products>
         ))}
       </div>
-      <div>
+      {/* <div>
         <Orders cart={cart} clearCart={clearCart}>
           <button className="review-order-btn">
             <Link to="/orders">Review Orders</Link>
           </button>
         </Orders>
-      </div>
+      </div> */}
 
       <div className="pagination">
-        <p>Your current page: {page}</p>
+        {/* <p>Your current page: {page}</p> */}
         <div>
           {[...Array(pages).keys()].map((number) => (
             <button
@@ -127,14 +125,14 @@ const Shop = () => {
             </button>
           ))}
         </div>
-        <select onChange={(event) => setSize(event.target.value)}>
+        {/* <select onChange={(event) => setSize(event.target.value)}>
           <option value="5">5</option>
           <option value="10" selected>
             10
           </option>
           <option value="15">15</option>
           <option value="20">20</option>
-        </select>
+        </select> */}
       </div>
     </div>
   );
