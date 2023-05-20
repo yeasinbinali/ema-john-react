@@ -31,9 +31,7 @@ const Products = (props) => {
             <FontAwesomeIcon className="text-white" icon={faCartShopping} />
             Add to Cart
           </button>
-          <button
-            className="cart-btn-right"
-          >
+          <button className="cart-btn-right">
             <FontAwesomeIcon className="text-white" icon={faEye} />
             View
           </button>

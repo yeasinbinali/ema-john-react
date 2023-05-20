@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import "./Header.css";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -8,24 +9,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   addCartFromLocalStorage,
-  addToDB,
   deleteFromLocalStorage,
-  removeFromLocalStorage,
 } from "../Utilities/fakeDB";
-import { useForm } from "react-hook-form";
 
 const Header = () => {
-  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const { user, logOutUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    const storedCart = addCartFromLocalStorage();
-    const savedCart = [];
-    const ids = Object.keys(storedCart);
+  const storedCart = addCartFromLocalStorage();
+  const ids = Object.keys(storedCart);
+
+  const { data: savedCart=[], refetch } = useQuery(["cart"], () => {
     fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
       method: "POST",
       headers: {
@@ -33,20 +30,20 @@ const Header = () => {
       },
       body: JSON.stringify(ids),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("by ids", data);
-        for (const id in storedCart) {
-          const addedProduct = data?.find((product) => product._id === id);
-          if (addedProduct) {
-            const quantity = storedCart[id];
-            addedProduct.quantity = quantity;
-            savedCart.push(addedProduct);
-          }
+    .then((res) => res.json())
+    .then(data => {
+      for (const id in storedCart) {
+        const addedProduct = data?.find((product) => product._id === id);
+        if (addedProduct) {
+          const quantity = storedCart[id];
+          addedProduct.quantity = quantity;
+          savedCart.push(addedProduct);
         }
-        setCart(savedCart);
-      });
-  }, [products]);
+      }
+      setCart(savedCart);
+      refetch();
+    })
+  });
 
   const clearCart = () => {
     setCart([]);
@@ -59,8 +56,8 @@ const Header = () => {
 
   for (const selectedCart of cart) {
     quantity = quantity + selectedCart.quantity;
-    total = total + selectedCart.price * selectedCart.quantity;
     shipping = shipping + selectedCart.shipping;
+    total = total + selectedCart.price * selectedCart.quantity + shipping;
   }
 
   const tax = (total * 0.1).toFixed(2);
@@ -103,20 +100,21 @@ const Header = () => {
               </b>
             </sup>
           </Button>
-          <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas className='text-center' show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Review Orders</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <h4 className="review-title">Order Review</h4>
-              <p>Selected Items: {quantity}</p>
-              <p>Total Price: {total}</p>
-              <p>Shipping Cost: {shipping}</p>
-              <p>Tax(10%): {tax}</p>
-              <p>
-                <b>Grand Total: {grandTotal.toFixed(2)}</b>
+              <p className='text-2xl text-center font-bold' style={{color: 'rgb(255, 145, 0)'}}>Cart</p>
+              <p className='text-xl'>Selected Items: {quantity}</p>
+              <p className='text-xl'>Shipping Cost: {shipping}</p>
+              <p className='text-xl'>Total Before Tax: {total}</p>
+              <p className='text-xl'>Tax(10%): {tax}</p>
+              <p className='text-xl font-bold'> 
+                Grand Total: {grandTotal.toFixed(2)}
               </p>
-              <button onClick={clearCart} className='cart-btn'>Clear Cart</button>
+              <button onClick={clearCart} className="empty-cart-btn">
+                Empty Cart
+              </button>
             </Offcanvas.Body>
           </Offcanvas>
         </>

@@ -6,7 +6,7 @@
     display: block;
     margin-top: 2em;
 }
-.review-order-btn{
+/* .review-order-btn{
     margin-left: 10px;
     text-decoration: none;
     padding: 2px 5px;
@@ -19,7 +19,7 @@
 }
 .review-order-btn:hover{
     background-color: slateblue;
-}
+} */
 
 .pagination{
     margin: 30px 0 50px 30%;

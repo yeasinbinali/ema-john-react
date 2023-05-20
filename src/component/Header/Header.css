@@ -23,6 +23,13 @@ section{
     border: none;
     margin-left: 10px;
 }
+.empty-cart-btn{
+    background-color: rgb(255, 145, 0);
+    color: white;
+    border-radius: 1em;
+    padding: 0.5em 2em;
+    font-weight: bold;
+}
 
 @media screen and (max-width: 601px) {
     .navbar a{
