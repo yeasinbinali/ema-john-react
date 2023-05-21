@@ -14,16 +14,18 @@ function App() {
       children: [
         {
           path: "/",
-          loader: async() =>
+          loader: async () =>
             fetch("https://ema-john-server-eosin.vercel.app/products"),
           element: <Shop></Shop>,
         },
         {
-          path: '/product/:id',
+          path: "/product/:id",
           element: <SingleProductOverview></SingleProductOverview>,
-          loader: async({params}) => {
-            return fetch(`http://localhost:5000/products/${params.id}`)
-          }
+          loader: async ({ params }) => {
+            return fetch(
+              `https://ema-john-server-eosin.vercel.app/products/${params.id}`
+            );
+          },
         },
         {
           path: "/login",
@@ -32,7 +34,7 @@ function App() {
         {
           path: "/signup",
           element: <Signup></Signup>,
-        }
+        },
       ],
     },
   ]);

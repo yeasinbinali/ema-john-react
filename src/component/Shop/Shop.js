@@ -86,7 +86,7 @@ const Shop = () => {
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <div className="products">
         {products?.map((product) => (
           <Products

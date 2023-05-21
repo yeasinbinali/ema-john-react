@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <UserContext>
-        <App />
+          <App />
       </UserContext>
     </QueryClientProvider>
   </React.StrictMode>

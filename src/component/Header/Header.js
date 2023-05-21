@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { useContext, useEffect, useState } from "react";
 import "./Header.css";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -11,6 +10,7 @@ import {
   addCartFromLocalStorage,
   deleteFromLocalStorage,
 } from "../Utilities/fakeDB";
+import { useQuery } from "@tanstack/react-query";
 
 const Header = () => {
   const [cart, setCart] = useState([]);
@@ -19,10 +19,10 @@ const Header = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const storedCart = addCartFromLocalStorage();
-  const ids = Object.keys(storedCart);
-
-  const { data: savedCart = [], refetch } = useQuery(() => {
+  useEffect(() => {
+    const storedCart = addCartFromLocalStorage();
+    const savedCart = [];
+    const ids = Object.keys(storedCart);
     fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
       method: "POST",
       headers: {
@@ -32,6 +32,7 @@ const Header = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("by ids", data);
         for (const id in storedCart) {
           const addedProduct = data?.find((product) => product._id === id);
           if (addedProduct) {
@@ -41,9 +42,34 @@ const Header = () => {
           }
         }
         setCart(savedCart);
-        refetch();
       });
-  });
+  }, []);
+
+  // const storedCart = addCartFromLocalStorage();
+  // const ids = Object.keys(storedCart);
+
+  // const { data:savedCart = [], refetch } = useQuery([''], () => {
+  //   fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(ids),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       for (const id in storedCart) {
+  //         const addedProduct = data?.find((product) => product._id === id);
+  //         if (addedProduct) {
+  //           const quantity = storedCart[id];
+  //           addedProduct.quantity = quantity;
+  //           savedCart.push(addedProduct);
+  //         }
+  //       }
+  //       setCart(savedCart);
+  //       refetch();
+  //     });
+  // });
 
   const clearCart = () => {
     setCart([]);
