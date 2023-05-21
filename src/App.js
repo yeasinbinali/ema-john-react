@@ -4,8 +4,7 @@ import Main from "./layouts/Main/Main";
 import Shop from "./component/Shop/Shop";
 import Login from "./component/Login/Login";
 import Signup from "./component/Signup/Signup";
-import Shipping from "./component/Shipping/Shipping";
-import PrivateRoute from "./component/Routes/PrivateRoute";
+import SingleProductOverview from "./component/SingleProductOverview/SingleProductOverview";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,17 +14,16 @@ function App() {
       children: [
         {
           path: "/",
-          loader: () =>
+          loader: async() =>
             fetch("https://ema-john-server-eosin.vercel.app/products"),
           element: <Shop></Shop>,
         },
         {
-          path: "/shipping",
-          element: (
-            <PrivateRoute>
-              <Shipping></Shipping>
-            </PrivateRoute>
-          ),
+          path: '/product/:id',
+          element: <SingleProductOverview></SingleProductOverview>,
+          loader: async({params}) => {
+            return fetch(`http://localhost:5000/products/${params.id}`)
+          }
         },
         {
           path: "/login",

@@ -22,7 +22,7 @@ const Header = () => {
   const storedCart = addCartFromLocalStorage();
   const ids = Object.keys(storedCart);
 
-  const { data: savedCart = [], refetch } = useQuery(["cart"], () => {
+  const { data: savedCart = [], refetch } = useQuery(() => {
     fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
       method: "POST",
       headers: {

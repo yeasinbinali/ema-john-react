@@ -1,10 +1,11 @@
 import { faCartShopping, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Products.css";
 
 const Products = (props) => {
-  const { name, seller, price, ratings, stock, img, category } = props.product;
+  const { name, seller, price, ratings, stock, img, category, _id } = props.product;
   const { handleAddToCart } = props;
 
   return (
@@ -31,10 +32,12 @@ const Products = (props) => {
             <FontAwesomeIcon className="text-white" icon={faCartShopping} />
             Add to Cart
           </button>
-          <button className="cart-btn-right">
-            <FontAwesomeIcon className="text-white" icon={faEye} />
-            View
-          </button>
+          <Link to={`/product/${_id}`}>
+            <button className="cart-btn-right">
+              <FontAwesomeIcon className="text-white" icon={faEye} />
+              View
+            </button>
+          </Link>
         </div>
       </div>
     </div>
