@@ -22,7 +22,7 @@ const Header = () => {
   const storedCart = addCartFromLocalStorage();
   const ids = Object.keys(storedCart);
 
-  const { data: savedCart=[], refetch } = useQuery(["cart"], () => {
+  const { data: savedCart = [], refetch } = useQuery(["cart"], () => {
     fetch("https://ema-john-server-eosin.vercel.app/productsByIds", {
       method: "POST",
       headers: {
@@ -30,19 +30,19 @@ const Header = () => {
       },
       body: JSON.stringify(ids),
     })
-    .then((res) => res.json())
-    .then(data => {
-      for (const id in storedCart) {
-        const addedProduct = data?.find((product) => product._id === id);
-        if (addedProduct) {
-          const quantity = storedCart[id];
-          addedProduct.quantity = quantity;
-          savedCart.push(addedProduct);
+      .then((res) => res.json())
+      .then((data) => {
+        for (const id in storedCart) {
+          const addedProduct = data?.find((product) => product._id === id);
+          if (addedProduct) {
+            const quantity = storedCart[id];
+            addedProduct.quantity = quantity;
+            savedCart.push(addedProduct);
+          }
         }
-      }
-      setCart(savedCart);
-      refetch();
-    })
+        setCart(savedCart);
+        refetch();
+      });
   });
 
   const clearCart = () => {
@@ -65,13 +65,16 @@ const Header = () => {
 
   return (
     <section>
-      <img
-        className="logo"
-        src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-        alt="img-failed"
-      />
+      <div>
+        <img
+          className="logo"
+          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
+          alt="img-failed"
+        />
+      </div>
       <div className="navbar-container">
         <Link to="/">Shop</Link>
+        <Link to="/inventory">Inventory</Link>
         {user?.uid ? (
           <button className="btn-logout" onClick={logOutUser}>
             Logout
@@ -100,16 +103,20 @@ const Header = () => {
               </b>
             </sup>
           </Button>
-          <Offcanvas className='text-center' show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
-            </Offcanvas.Header>
+          <Offcanvas className="text-center" show={show} onHide={handleClose}>
+            <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-              <p className='text-2xl text-center font-bold' style={{color: 'rgb(255, 145, 0)'}}>Cart</p>
-              <p className='text-xl'>Selected Items: {quantity}</p>
-              <p className='text-xl'>Shipping Cost: {shipping}</p>
-              <p className='text-xl'>Total Before Tax: {total}</p>
-              <p className='text-xl'>Tax(10%): {tax}</p>
-              <p className='text-xl font-bold'> 
+              <p
+                className="text-2xl text-center font-bold"
+                style={{ color: "rgb(255, 145, 0)" }}
+              >
+                Cart
+              </p>
+              <p className="text-xl">Selected Items: {quantity}</p>
+              <p className="text-xl">Shipping Cost: {shipping}</p>
+              <p className="text-xl">Total Before Tax: {total}</p>
+              <p className="text-xl">Tax(10%): {tax}</p>
+              <p className="text-xl font-bold">
                 Grand Total: {grandTotal.toFixed(2)}
               </p>
               <button onClick={clearCart} className="empty-cart-btn">

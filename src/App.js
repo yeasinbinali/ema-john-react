@@ -2,8 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./layouts/Main/Main";
 import Shop from "./component/Shop/Shop";
-import OrderProduct from "./component/OrderProduct/OrderProduct";
-import { ProductAndCartLoader } from "./component/ProductAndCartLoader/ProductAndCartLoader";
 import Login from "./component/Login/Login";
 import Signup from "./component/Signup/Signup";
 import Shipping from "./component/Shipping/Shipping";
@@ -36,12 +34,7 @@ function App() {
         {
           path: "/signup",
           element: <Signup></Signup>,
-        },
-        {
-          path: "/orders",
-          loader: ProductAndCartLoader,
-          element: <OrderProduct></OrderProduct>,
-        },
+        }
       ],
     },
   ]);

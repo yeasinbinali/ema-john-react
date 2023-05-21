@@ -22,6 +22,11 @@
     border-radius: 1em;
 }
 
+.cart-btn-left:hover{
+    background-color: rgb(255, 106, 0);
+    color: white;
+}
+
 .cart-btn-right{
     background-color: rgb(255, 145, 0);
     color: white;
@@ -29,6 +34,11 @@
     font-weight: bold;
     border-radius: 1em;
     margin-left: 2em;
+}
+
+.cart-btn-right:hover{
+    background-color: rgb(255, 106, 0);
+    color: white;
 }
 /* .product-container{
     border: 1px solid #95A0A7;

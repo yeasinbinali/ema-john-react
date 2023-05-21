@@ -3,18 +3,16 @@ import Products from "../Products/Products";
 import {
   addCartFromLocalStorage,
   addToDB,
-  deleteFromLocalStorage,
   removeFromLocalStorage,
 } from "../Utilities/fakeDB";
 import "./Shop.css";
 
 const Shop = () => {
-  // const {products, count} = useLoaderData();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size] = useState(10);
 
   const pages = Math.ceil(count / size);
 
@@ -87,11 +85,6 @@ const Shop = () => {
     removeFromLocalStorage(selectedProduct._id);
   };
 
-  const clearCart = () => {
-    setCart([]);
-    deleteFromLocalStorage();
-  };
-
   return (
     <div className='container'>
       <div className="products">
@@ -104,16 +97,8 @@ const Shop = () => {
           ></Products>
         ))}
       </div>
-      {/* <div>
-        <Orders cart={cart} clearCart={clearCart}>
-          <button className="review-order-btn">
-            <Link to="/orders">Review Orders</Link>
-          </button>
-        </Orders>
-      </div> */}
 
       <div className="pagination">
-        {/* <p>Your current page: {page}</p> */}
         <div>
           {[...Array(pages).keys()].map((number) => (
             <button
