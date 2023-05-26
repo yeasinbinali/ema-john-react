@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import "./Header.css";
@@ -10,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   addCartFromLocalStorage,
-  deleteFromLocalStorage
+  deleteFromLocalStorage,
 } from "../Utilities/fakeDB";
 
 const Header = () => {
@@ -47,7 +46,7 @@ const Header = () => {
       setCart(savedCart);
     }
   }, [data]);
-refetch()
+  refetch();
   const clearCart = () => {
     setCart([]);
     deleteFromLocalStorage();
@@ -68,11 +67,13 @@ refetch()
 
   return (
     <section>
-      <img
-        className="logo"
-        src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-        alt="img-failed"
-      />
+      <div>
+        <img
+          className="logo"
+          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
+          alt="img-failed"
+        />
+      </div>
       <div className="navbar-container">
         <Link to="/">Shop</Link>
         {user?.uid ? (
@@ -104,18 +105,30 @@ refetch()
             </sup>
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Review Orders</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <h4 className="review-title">Order Review</h4>
-              <p>Selected Items: {quantity}</p>
-              <p>Total Price: {total}</p>
-              <p>Shipping Cost: {shipping}</p>
-              <p>Tax(10%): {tax}</p>
-              <p>
-                <b>Grand Total: {grandTotal.toFixed(2)}</b>
-              </p>
+            <Offcanvas.Header closeButton></Offcanvas.Header>
+            <Offcanvas.Body className="text-center">
+              <h4
+                className="review-title text-center text-4xl font-bold"
+                style={{ color: "rgb(255, 145, 0)" }}
+              >
+                Cart
+              </h4>
+              <div className="flex justify-evenly my-3">
+                <div className="text-start">
+                  <p className="text-xl font-medium">Selected Items:</p>
+                  <p className="text-xl font-medium">Total Price:</p>
+                  <p className="text-xl font-medium">Shipping Cost:</p>
+                  <p className="text-xl font-medium">Tax(10%):</p>
+                  <p className="text-xl font-bold">Grand Total:</p>
+                </div>
+                <div className="text-start">
+                  <p className="text-xl font-medium">{quantity}</p>
+                  <p className="text-xl font-medium">${total}</p>
+                  <p className="text-xl font-medium">${shipping}</p>
+                  <p className="text-xl font-medium">${tax}</p>
+                  <p className="text-xl font-bold">${grandTotal.toFixed(2)}</p>
+                </div>
+              </div>
               <button onClick={clearCart} className="empty-cart-btn">
                 Empty Cart
               </button>

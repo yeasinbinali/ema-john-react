@@ -106,7 +106,7 @@ const Shop = () => {
               onClick={() => setPage(number)}
               className={page === number && "selected"}
             >
-              {number}
+              {number+1}
             </button>
           ))}
         </div>

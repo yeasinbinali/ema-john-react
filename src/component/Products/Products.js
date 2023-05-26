@@ -13,7 +13,7 @@ const Products = (props) => {
       <img src={img} alt="img-failed"></img>
       <div className="product-info">
         <div>
-          <h2 className="text-2xl font-bold">{name}</h2>
+          <h2 className="text-2xl font-bold">{name.substring(0,50)}</h2>
           <p className="m-0">
             Company: <b>{seller}</b> | Category: <b>{category}</b>
           </p>

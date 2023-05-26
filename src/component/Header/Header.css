@@ -16,10 +16,12 @@ section {
   font-weight: bold;
   padding: 5px 10px;
 }
+
 .navbar-container a:hover {
   background-color: rgb(255, 106, 0);
   color: white;
 }
+
 .logo {
   width: 35%;
   margin: 30px auto;
