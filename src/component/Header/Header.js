@@ -10,13 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   addCartFromLocalStorage,
-  addToDB,
-  deleteFromLocalStorage,
-  removeFromLocalStorage,
+  deleteFromLocalStorage
 } from "../Utilities/fakeDB";
 
 const Header = () => {
-  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const { user, logOutUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);

@@ -1,5 +1,3 @@
-# Ema-John-React
+# Ema-John
 
-### It is my first react projct. 
-
-Here is this -> [Ema-John-React](https://ema-john-react-yba.netlify.app/)
+Here is this -> [Ema-John](https://ema-john-4d5a0.web.app)
