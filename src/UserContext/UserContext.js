@@ -35,11 +35,9 @@ const UserContext = ({children}) => {
     const authInfo = {user, loading, createUser, signInUser, logOutUser};
 
     return (
-        <div>
             <AuthContext.Provider value={authInfo}>
                 {children}
             </AuthContext.Provider>
-        </div>
     );
 };
 
