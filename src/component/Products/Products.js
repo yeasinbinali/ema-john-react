@@ -1,4 +1,4 @@
-import { faCartShopping, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -35,7 +35,6 @@ const Products = (props) => {
           </button>
           <Link to={`/product/${_id}`}>
             <button className="cart-btn-right">
-              <FontAwesomeIcon className="text-white" icon={faEye} />
               View
             </button>
           </Link>

@@ -1,11 +1,9 @@
-import { faEye, faUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const InventoryProduct = (props) => {
-  const { name, seller, price, ratings, stock, img, category, _id } =
-    props.product;
+  const { name, seller, price, ratings, stock, img, category, _id } = props.product;
+
   return (
     <div className="product-container">
       <img src={img} alt="img-failed"></img>
@@ -25,16 +23,14 @@ const InventoryProduct = (props) => {
         <div className="button">
           <Link to={`/product/${_id}`}>
             <button className="cart-btn-left">
-              <FontAwesomeIcon className="text-white" icon={faEye} />
               View
             </button>
           </Link>
-          <button
-            className="cart-btn-right"
-          >
-            <FontAwesomeIcon className="text-white" icon={faUpload} />
-            Update
-          </button>
+          <Link to={`/inventory/${_id}`}>
+            <button className="cart-btn-right">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>

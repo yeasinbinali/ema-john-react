@@ -8,6 +8,8 @@ import SingleProductOverview from "./component/SingleProductOverview/SingleProdu
 import Inventory from "./component/Inventory/Inventory";
 import PrivateRoute from "./component/Routes/PrivateRoute";
 import Profile from "./component/Profile/Profile";
+import InventoryProduct from "./component/InventoryProduct/InventoryProduct";
+import UpdatedInventory from "./component/UpdatedInventory/UpdatedInventory";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,19 +19,36 @@ function App() {
       children: [
         {
           path: "/",
-          loader: async () => fetch("https://ema-john-server-eosin.vercel.app/products"),
-          element: <Shop></Shop>
+          loader: async () =>
+            fetch("https://ema-john-server-eosin.vercel.app/products"),
+          element: <Shop></Shop>,
         },
         {
-          path: '/inventory',
-          element: <PrivateRoute><Inventory></Inventory></PrivateRoute>,
-          loader: async () => fetch("https://ema-john-server-eosin.vercel.app/products")
+          path: "/inventory",
+          element: (
+            <PrivateRoute>
+              <Inventory></Inventory>
+            </PrivateRoute>
+          ),
+          loader: async () =>
+            fetch("https://ema-john-server-eosin.vercel.app/products"),
         },
         {
           path: "/product/:id",
           element: <SingleProductOverview></SingleProductOverview>,
           loader: async ({ params }) => {
-            return fetch(`https://ema-john-server-eosin.vercel.app/products/${params.id}`);
+            return fetch(
+              `https://ema-john-server-eosin.vercel.app/products/${params.id}`
+            );
+          },
+        },
+        {
+          path: "/inventory/:id",
+          element: <UpdatedInventory></UpdatedInventory>,
+          loader: async ({ params }) => {
+            return fetch(
+              `https://ema-john-server-eosin.vercel.app/products/${params.id}`
+            );
           },
         },
         {
@@ -41,9 +60,9 @@ function App() {
           element: <Signup></Signup>,
         },
         {
-          path: '/profile',
-          element: <Profile></Profile>
-        }
+          path: "/profile",
+          element: <Profile></Profile>,
+        },
       ],
     },
   ]);

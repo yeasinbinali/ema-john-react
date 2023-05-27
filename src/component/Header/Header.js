@@ -14,7 +14,7 @@ import {
 
 const Header = () => {
   const [cart, setCart] = useState([]);
-  const { user, logOutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
