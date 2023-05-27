@@ -86,7 +86,7 @@ const Inventory = () => {
 
   return (
     <div className="container">
-      <h3 className="text-center my-4 font-bold">Inventory</h3>
+      <h3 className="text-center mt-2 font-bold">Inventory</h3>
       <div className="products">
         {products?.map((product) => (
           <InventoryProduct
