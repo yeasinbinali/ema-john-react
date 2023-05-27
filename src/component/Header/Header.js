@@ -71,15 +71,14 @@ const Header = () => {
         <img
           className="logo"
           src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-          alt="img-failed"
+          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
         />
       </div>
       <div className="navbar-container">
         <Link to="/">Shop</Link>
+        <Link to="/inventory">Inventory</Link>
         {user?.uid ? (
-          <button className="btn-logout" onClick={logOutUser}>
-            Logout
-          </button>
+          <Link to='/profile'>Profile</Link>
         ) : (
           <>
             <Link to="/login">Login</Link>

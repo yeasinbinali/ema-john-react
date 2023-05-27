@@ -39,7 +39,6 @@ const Shop = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("by ids", data);
         for (const id in storedCart) {
           const addedProduct = data?.find((product) => product._id === id);
           if (addedProduct) {
@@ -106,18 +105,10 @@ const Shop = () => {
               onClick={() => setPage(number)}
               className={page === number && "selected"}
             >
-              {number+1}
+              {number + 1}
             </button>
           ))}
         </div>
-        {/* <select onChange={(event) => setSize(event.target.value)}>
-          <option value="5">5</option>
-          <option value="10" selected>
-            10
-          </option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select> */}
       </div>
     </div>
   );

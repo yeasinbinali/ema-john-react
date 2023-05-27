@@ -5,6 +5,9 @@ import Shop from "./component/Shop/Shop";
 import Login from "./component/Login/Login";
 import Signup from "./component/Signup/Signup";
 import SingleProductOverview from "./component/SingleProductOverview/SingleProductOverview";
+import Inventory from "./component/Inventory/Inventory";
+import PrivateRoute from "./component/Routes/PrivateRoute";
+import Profile from "./component/Profile/Profile";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,7 +18,12 @@ function App() {
         {
           path: "/",
           loader: async () => fetch("https://ema-john-server-eosin.vercel.app/products"),
-          element: <Shop></Shop>,
+          element: <Shop></Shop>
+        },
+        {
+          path: '/inventory',
+          element: <PrivateRoute><Inventory></Inventory></PrivateRoute>,
+          loader: async () => fetch("https://ema-john-server-eosin.vercel.app/products")
         },
         {
           path: "/product/:id",
@@ -32,6 +40,10 @@ function App() {
           path: "/signup",
           element: <Signup></Signup>,
         },
+        {
+          path: '/profile',
+          element: <Profile></Profile>
+        }
       ],
     },
   ]);

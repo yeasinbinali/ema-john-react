@@ -1,14 +1,11 @@
-import { faCartShopping, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Products.css";
 
-const Products = (props) => {
+const InventoryProduct = (props) => {
   const { name, seller, price, ratings, stock, img, category, _id } =
     props.product;
-  const { handleAddToCart } = props;
-
   return (
     <div className="product-container">
       <img src={img} alt="img-failed"></img>
@@ -26,23 +23,22 @@ const Products = (props) => {
           </h5>
         </div>
         <div className="button">
-          <button
-            onClick={() => handleAddToCart(props.product)}
-            className="cart-btn-left"
-          >
-            <FontAwesomeIcon className="text-white" icon={faCartShopping} />
-            Add to Cart
-          </button>
           <Link to={`/product/${_id}`}>
-            <button className="cart-btn-right">
+            <button className="cart-btn-left">
               <FontAwesomeIcon className="text-white" icon={faEye} />
               View
             </button>
           </Link>
+          <button
+            className="cart-btn-right"
+          >
+            <FontAwesomeIcon className="text-white" icon={faUpload} />
+            Update
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Products;
+export default InventoryProduct;
