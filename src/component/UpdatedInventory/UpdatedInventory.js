@@ -53,7 +53,7 @@ const UpdatedInventory = () => {
       <h3 className="text-center font-bold" style={{ color: "rgb(255, 145, 1" }}>
         Edit Product
       </h3>
-      <p className="text-center">
+      <p className="text-center text-xs md:text-sm">
         <strong>Product id: {_id}</strong>
       </p>
       <div className="form-container">
@@ -177,7 +177,7 @@ const UpdatedInventory = () => {
           </button>
         )}
       </div>
-      <p className='text-sm text-center font-bold mt-2'>Update button is only available for admins</p>
+      <p className="text-center text-xs md:text-sm mt-2">Update button is only available for admins</p>
     </div>
   );
 };

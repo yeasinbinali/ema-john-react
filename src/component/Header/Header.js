@@ -45,7 +45,7 @@ const Header = () => {
       }
       setCart(savedCart);
     }
-  }, [data, storedCart]);
+  }, [data]);
   refetch();
   const clearCart = () => {
     setCart([]);
@@ -66,18 +66,24 @@ const Header = () => {
   const grandTotal = total + parseFloat(shipping) + parseFloat(tax);
 
   return (
-    <section>
-      <div className="navbar-container">
-        <Link to="/">Shop</Link>
-        <Link to="/inventory">Inventory</Link>
-        {user?.uid ? (
-          <Link to="/profile">Profile</Link>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-          </>
-        )}
-
+    <div className="main-container">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
+          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
+        />
+      </div>
+      <header className="navbar-container">
+          <Link to="/">Shop</Link>
+          <Link to="/inventory">Inventory</Link>
+          {user?.uid ? (
+            <Link to="/profile">Profile</Link>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+            </>
+          )}
         <>
           <Button
             style={{
@@ -87,10 +93,10 @@ const Header = () => {
             onClick={handleShow}
           >
             <FontAwesomeIcon
-              className="text-white text-3xl ml-4"
+              className="text-white sm:text-xs md:text-3xl ml-4"
               icon={faShoppingCart}
             />
-            <sup className="text-2xl">
+            <sup className="sm:text-xs md:text-2xl">
               <b>
                 <sup>{quantity}</sup>
               </b>
@@ -127,15 +133,8 @@ const Header = () => {
             </Offcanvas.Body>
           </Offcanvas>
         </>
-      </div>
-      <div className='mt-20'>
-        <img
-          className="logo"
-          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
-        />
-      </div>
-    </section>
+      </header>
+    </div>
   );
 };
 
