@@ -24,7 +24,7 @@ const UpdatedInventory = () => {
 
   const handleUpdateProduct = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:5000/products/${_id}`, {
+    fetch(`https://ema-john-server-eosin.vercel.app/products/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -50,7 +50,10 @@ const UpdatedInventory = () => {
 
   return (
     <div className="mt-4 mb-20">
-      <h3 className="text-center font-bold" style={{ color: "rgb(255, 145, 1" }}>
+      <h3
+        className="text-center font-bold"
+        style={{ color: "rgb(255, 145, 1" }}
+      >
         Edit Product
       </h3>
       <p className="text-center text-xs md:text-sm">
@@ -177,7 +180,9 @@ const UpdatedInventory = () => {
           </button>
         )}
       </div>
-      <p className="text-center text-xs md:text-sm mt-2">Update button is only available for admins</p>
+      <p className="text-center text-xs md:text-sm mt-2">
+        Update button is only available for admins
+      </p>
     </div>
   );
 };
