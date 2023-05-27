@@ -1,17 +1,22 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 import "./Login.css";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const form = location.state?.from?.pathname || "/";
+
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
@@ -20,11 +25,24 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(form, {replace: true});
       })
       .catch((error) => {
         setError(error.message);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+      navigate(form, {replace: true});
+    })
+    .catch(error => {
+      setError(error.message);
+    })
+  }
 
   return (
     <form
@@ -66,7 +84,7 @@ const Login = () => {
       <br />
       <strong>OR</strong>
       <br />
-      <button className="btn-outline border-2 p-2 mt-2 w-100">
+      <button onClick={handleGoogleSignIn} className="btn-outline border-2 p-2 mt-2 w-100">
         Google Sign-In
       </button>
     </form>
