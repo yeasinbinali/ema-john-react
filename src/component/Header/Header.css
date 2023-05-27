@@ -1,9 +1,14 @@
 .main-container {
   text-align: center;
+  position: fixed;
 }
 .logo-container{
-  width: 35%;
-  margin: 10px auto;
+  margin: 0;
+  background-color: white;
+}
+.logo{
+  width: 15%;
+  margin: 0 auto;
 }
 .navbar-container {
   display: flex;
