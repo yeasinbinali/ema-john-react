@@ -5,6 +5,7 @@ import {
   addToDB,
   removeFromLocalStorage,
 } from "../Utilities/fakeDB";
+import './Inventory.css';
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
@@ -85,7 +86,7 @@ const Inventory = () => {
 
   return (
     <div className="container">
-      <h3 className="text-center my-4">Inventory</h3>
+      <h3 className="text-center my-4 font-bold">Inventory</h3>
       <div className="products">
         {products?.map((product) => (
           <InventoryProduct

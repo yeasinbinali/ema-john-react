@@ -6,6 +6,9 @@ section {
   align-items: center;
   justify-content: center;
   background: rgb(255, 145, 0);
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 .navbar-container a {
   color: white;
@@ -22,7 +25,7 @@ section {
 }
 .logo {
   width: 35%;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   position: relative;
 }
 .empty-cart-btn {

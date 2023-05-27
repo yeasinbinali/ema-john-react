@@ -45,7 +45,7 @@ const Header = () => {
       }
       setCart(savedCart);
     }
-  }, [data]);
+  }, [data, storedCart]);
   refetch();
   const clearCart = () => {
     setCart([]);
@@ -59,26 +59,19 @@ const Header = () => {
   for (const selectedCart of cart) {
     quantity = quantity + selectedCart.quantity;
     total = total + selectedCart.price * selectedCart.quantity;
-    shipping = shipping + selectedCart.shipping;
+    shipping = shipping + parseFloat(selectedCart.shipping);
   }
 
   const tax = (total * 0.1).toFixed(2);
-  const grandTotal = total + shipping + parseFloat(tax);
+  const grandTotal = total + parseFloat(shipping) + parseFloat(tax);
 
   return (
     <section>
-      <div>
-        <img
-          className="logo"
-          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
-        />
-      </div>
       <div className="navbar-container">
         <Link to="/">Shop</Link>
         <Link to="/inventory">Inventory</Link>
         {user?.uid ? (
-          <Link to='/profile'>Profile</Link>
+          <Link to="/profile">Profile</Link>
         ) : (
           <>
             <Link to="/login">Login</Link>
@@ -134,6 +127,13 @@ const Header = () => {
             </Offcanvas.Body>
           </Offcanvas>
         </>
+      </div>
+      <div className='mt-20'>
+        <img
+          className="logo"
+          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
+          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
+        />
       </div>
     </section>
   );
