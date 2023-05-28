@@ -60,9 +60,11 @@ const Header = () => {
   for (const selectedCart of cart) {
     quantity = quantity + selectedCart.quantity;
     total = total + parseFloat(selectedCart.price) * selectedCart.quantity;
-    shipping = shipping + selectedCart.shipping;
+    shipping = shipping + parseFloat(selectedCart.shipping);
   }
 
+  const totalPrice = total.toFixed(2);
+  const totalShipping = shipping.toFixed(2);
   const tax = (total * 0.1).toFixed(2);
   const grandTotal = total + parseFloat(shipping) + parseFloat(tax);
 
@@ -115,8 +117,8 @@ const Header = () => {
                   </div>
                   <div>
                     <p className="text-xl font-medium">{quantity}</p>
-                    <p className="text-xl font-medium">{total}</p>
-                    <p className="text-xl font-medium">{shipping}</p>
+                    <p className="text-xl font-medium">{totalPrice}</p>
+                    <p className="text-xl font-medium">{totalShipping}</p>
                     <p className="text-xl font-medium">{tax}</p>
                     <p className="text-xl font-bold">{grandTotal.toFixed(2)}</p>
                   </div>
