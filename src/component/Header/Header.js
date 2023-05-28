@@ -11,6 +11,7 @@ import {
   addCartFromLocalStorage,
   deleteFromLocalStorage,
 } from "../Utilities/fakeDB";
+import { Badge } from "react-bootstrap";
 
 const Header = () => {
   const [cart, setCart] = useState([]);
@@ -58,23 +59,22 @@ const Header = () => {
 
   for (const selectedCart of cart) {
     quantity = quantity + selectedCart.quantity;
-    total = total + selectedCart.price * selectedCart.quantity;
-    shipping = shipping + parseFloat(selectedCart.shipping);
+    total = total + parseFloat(selectedCart.price) * selectedCart.quantity;
+    shipping = shipping + selectedCart.shipping;
   }
 
   const tax = (total * 0.1).toFixed(2);
   const grandTotal = total + parseFloat(shipping) + parseFloat(tax);
 
   return (
-    <div className="main-container">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
-          alt="https://images-na.ssl-images-amazon.com/images/I/416UTZJ0FbL._AC_US218_.jpg"
-        />
-      </div>
-      <header className="navbar-container">
+    <>
+      <img
+        className="logo"
+        src="https://i.ibb.co/yND0V8v/logo-95f238a5.png"
+        alt="img-failed"
+      />
+      <section className="sticky-top">
+        <div className="navbar-container">
           <Link to="/">Shop</Link>
           <Link to="/inventory">Inventory</Link>
           {user?.uid ? (
@@ -84,57 +84,62 @@ const Header = () => {
               <Link to="/login">Login</Link>
             </>
           )}
-        <>
-          <Button
-            style={{
-              backgroundColor: "rgb(255, 145, 0)",
-              border: "rgb(255, 145, 0)",
-            }}
-            onClick={handleShow}
-          >
-            <FontAwesomeIcon
-              className="text-white sm:text-xs md:text-3xl ml-4"
-              icon={faShoppingCart}
-            />
-            <sup className="sm:text-xs md:text-2xl">
-              <b>
-                <sup>{quantity}</sup>
-              </b>
-            </sup>
-          </Button>
-          <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton></Offcanvas.Header>
-            <Offcanvas.Body className="text-center">
-              <h4
-                className="review-title text-center text-4xl font-bold"
-                style={{ color: "rgb(255, 145, 0)" }}
-              >
-                Cart
-              </h4>
-              <div className="flex justify-evenly my-3">
-                <div className="text-start">
-                  <p className="text-xl font-medium">Selected Items:</p>
-                  <p className="text-xl font-medium">Total Price:</p>
-                  <p className="text-xl font-medium">Shipping Cost:</p>
-                  <p className="text-xl font-medium">Tax(10%):</p>
-                  <p className="text-xl font-bold">Grand Total:</p>
+          <>
+            <Button
+              style={{
+                backgroundColor: "rgb(255, 145, 0)",
+                border: "rgb(255, 145, 0)",
+              }}
+              className="flex items-center"
+              onClick={handleShow}
+            >
+              <FontAwesomeIcon
+                className="text-white text-xl md:text-2xl lg:text-3xl ml-4"
+                icon={faShoppingCart}
+              />
+              <sup>
+                <Badge>{quantity}</Badge>
+              </sup>
+            </Button>
+            <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton></Offcanvas.Header>
+              <Offcanvas.Body>
+                <p className='off-header'>CART</p>
+                <div className="flex justify-evenly items-center">
+                  <div>
+                    <p className="text-xl font-medium">Selected Items:</p>
+                    <p className="text-xl font-medium">Total Price: </p>
+                    <p className="text-xl font-medium">Shipping Cost:</p>
+                    <p className="text-xl font-medium">Tax(10%):</p>
+                    <p className="text-xl font-bold">Grand Total:</p>
+                  </div>
+                  <div>
+                    <p className="text-xl font-medium">{quantity}</p>
+                    <p className="text-xl font-medium">{total}</p>
+                    <p className="text-xl font-medium">{shipping}</p>
+                    <p className="text-xl font-medium">{tax}</p>
+                    <p className="text-xl font-bold">{grandTotal.toFixed(2)}</p>
+                  </div>
                 </div>
-                <div className="text-start">
-                  <p className="text-xl font-medium">{quantity}</p>
-                  <p className="text-xl font-medium">${total}</p>
-                  <p className="text-xl font-medium">${shipping}</p>
-                  <p className="text-xl font-medium">${tax}</p>
-                  <p className="text-xl font-bold">${grandTotal.toFixed(2)}</p>
+                <div className='text-center'>
+                  <button onClick={clearCart} className="empty-cart-btn">
+                    Empty Cart
+                  </button>
                 </div>
-              </div>
-              <button onClick={clearCart} className="empty-cart-btn">
-                Empty Cart
-              </button>
-            </Offcanvas.Body>
-          </Offcanvas>
-        </>
-      </header>
-    </div>
+                {/* <h4 className="review-title">Order Review</h4>
+                <p>Selected Items: {quantity}</p>
+                <p>Total Price: {total}</p>
+                <p>Shipping Cost: {shipping}</p>
+                <p>Tax(10%): {tax}</p>
+                <p>
+                  <b>Grand Total: {grandTotal.toFixed(2)}</b>
+                </p> */}
+              </Offcanvas.Body>
+            </Offcanvas>
+          </>
+        </div>
+      </section>
+    </>
   );
 };
 

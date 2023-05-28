@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <form
-      className="w-50 mx-auto border-2 rounded p-3 my-5 text-center"
+      className="w-75 md:w-50 mx-auto border-2 rounded p-3 my-5 text-center"
       onSubmit={handleSubmit(onSubmit)}
     >
       <h3 className="font-bold">Login</h3>

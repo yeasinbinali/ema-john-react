@@ -64,3 +64,14 @@
         padding: 6px 15px;
     }
 }
+
+@media screen and (max-width:376px){
+    .cart-btn-left{
+        padding: 4px 20px;
+        font-size: x-small;
+    }
+    .cart-btn-right{
+        padding: 4px 10px;
+        font-size: x-small;
+    }
+}

@@ -1,14 +1,7 @@
-.main-container {
-  text-align: center;
-  position: fixed;
-}
-.logo-container{
-  margin: 0;
-  background-color: white;
-}
 .logo{
-  width: 15%;
+  width: 35%;
   margin: 0 auto;
+  padding: 20px 0;
 }
 .navbar-container {
   display: flex;
@@ -29,6 +22,12 @@
   background-color: rgb(255, 106, 0);
   color: white;
 }
+.off-header{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 145, 0);
+}
 .empty-cart-btn {
   background-color: rgb(255, 145, 0);
   color: white;
@@ -45,4 +44,8 @@
   .navbar-container a{
     font-size: 16px;
   }
+}
+
+@media screen and (max-width:376px){
+  
 }
